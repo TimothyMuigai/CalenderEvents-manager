@@ -33,7 +33,8 @@ let events = [
 
 const getUpcomingEvents = (events) => {
     const now = new Date();
-    const oneWeekFromNow = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000);
+    const oneWeekFromNow = new Date();
+    oneWeekFromNow.setDate(now.getDate() + 7);
     
     return events
         .filter(event => event.date >= now && event.date <= oneWeekFromNow)
@@ -44,7 +45,7 @@ const getUpcomingEvents = (events) => {
         }));
 };
 
-// console.log(getUpcomingEvents(events));
+console.log(getUpcomingEvents(events));
 
 
 // function weakMap(){
@@ -91,4 +92,4 @@ function mostAttendees(maxEvent, currentEvent) {
 const eventWithMostAttendees = events.reduce(mostAttendees, events[0]);
 
 // Display the event with the highest number of attendees
-console.log(`The event with the most attendees is "${eventWithMostAttendees.title}" with ${eventWithMostAttendees.attendees.size} attendees.`);
+//console.log(`The event with the most attendees is "${eventWithMostAttendees.title}" with ${eventWithMostAttendees.attendees.size} attendees.`);
